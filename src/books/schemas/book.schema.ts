@@ -1,9 +1,9 @@
-// src/books/schemas/book.schema.ts
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+// book.model.ts
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
-export class Book extends Document {
+export class Book {
   @Prop({ required: true })
   title: string;
 
@@ -14,4 +14,4 @@ export class Book extends Document {
   price: number;
 }
 
-export const BookSchema = SchemaFactory.createForClass(Book);
+export const BookModel = SchemaFactory.createForClass(Book);

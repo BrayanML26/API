@@ -1,15 +1,16 @@
-// src/books/books.module.ts
+// books.module.ts (donde se define el módulo que usa BookModel)
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { BooksService } from './books.service';
 import { BooksController } from './books.controller';
-import { Book, BookSchema } from './schemas/book.schema';
+import { BooksService } from './books.service';
+import { Book, BookModel } from './schemas/book.schema'; // Importa el modelo y su esquema
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Book.name, schema: BookSchema }]),
+    MongooseModule.forFeature([{ name: 'Book', schema: BookModel }]),
+    // Otros módulos importados
   ],
-  providers: [BooksService],
   controllers: [BooksController],
+  providers: [BooksService],
 })
 export class BooksModule {}

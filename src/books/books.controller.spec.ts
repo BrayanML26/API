@@ -1,15 +1,23 @@
-// Ejemplo de configuración en books.controller.spec.ts
+// books.controller.spec.ts
 import { Test, TestingModule } from '@nestjs/testing';
 import { BooksController } from './books.controller';
 import { BooksService } from './books.service';
+import { BookModel } from './schemas/book.schema'; // Importa el modelo BookModel
 
 describe('BooksController', () => {
   let controller: BooksController;
+  let module: TestingModule;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    module = await Test.createTestingModule({
       controllers: [BooksController],
-      providers: [BooksService],
+      providers: [
+        BooksService,
+        {
+          provide: 'BookModel', // Nombre del proveedor (puede ser una cadena o un símbolo)
+          useValue: {}, // Aquí debes proporcionar una instancia válida de tu modelo BookModel
+        },
+      ],
     }).compile();
 
     controller = module.get<BooksController>(BooksController);
