@@ -1,0 +1,25 @@
+# .travis.yml for Backend (NestJS API)
+
+language: node_js
+node_js:
+  - "14"
+
+cache:
+  directories:
+    - node_modules
+
+services:
+  - mongodb  # Example: If using MongoDB
+
+install:
+  - npm install
+
+script:
+  - npm run test
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: npm run deploy
+  on:
+    branch: main
