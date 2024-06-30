@@ -1,3 +1,4 @@
+// Ejemplo de configuración en books.service.spec.ts
 import { Test, TestingModule } from '@nestjs/testing';
 import { BooksService } from './books.service';
 
@@ -15,4 +16,6 @@ describe('BooksService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  // Otras pruebas del servicio aquí
 });
